@@ -13,5 +13,4 @@ zones:
     sources:
       - config
     targets:
-      - dyn
       - route53

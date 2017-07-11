@@ -82,8 +82,6 @@ syncthing:
 unifi:
   ttl: 604800
   type: CNAME
-  value: desertbluffs.com.  ttl: 300
-  type: CNAME
   value: desertbluffs.com.
 zb14086362:
   ttl: 300
