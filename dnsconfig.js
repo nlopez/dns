@@ -12,11 +12,6 @@ var R53 = NewDnsProvider('r53', 'ROUTE53');
 
 D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
   A('@', '69.200.236.17', TTL(3600)),
-  MX('@', 10, 'mx.zoho.com.', TTL(86400)),
-  MX('@', 20, 'mx2.zoho.com.', TTL(86400)),
-  TXT('@', "v=spf1 mx include:zoho.com ~all", TTL(86400)),
-  TXT('_keybase', "keybase-site-verification=Lct-frBpniq-ggU6A97Vv1gyRhB_jOzHfIeigdRr2zs", TTL(86400)),
-  TXT('_amazonses', "nOSqNz6GuHWUV/GdUWiXEWRTTRMK/ibv6afYRtn5WtU=", TTL(86400)),
   CNAME('a', 'desertbluffs.com.', TTL(604800)),
   CNAME('b', 'desertbluffs.com.', TTL(604800)),
   CNAME('c', 'desertbluffs.com.', TTL(604800)),
@@ -59,6 +54,12 @@ D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
   CNAME('x', 'desertbluffs.com.', TTL(604800)),
   CNAME('y', 'desertbluffs.com.', TTL(604800)),
   CNAME('z', 'desertbluffs.com.', TTL(604800)),
-  CNAME('zb14086362', 'zmverify.zoho.com.')
+  CNAME('zb14086362', 'zmverify.zoho.com.'),
+  MX('@', 10, 'mx.zoho.com.', TTL(86400)),
+  MX('@', 20, 'mx2.zoho.com.', TTL(86400)),
+  TXT('@', "v=spf1 mx include:zoho.com ~all", TTL(86400)),
+  TXT('_amazonses', "nOSqNz6GuHWUV/GdUWiXEWRTTRMK/ibv6afYRtn5WtU=", TTL(86400)),
+  TXT('_keybase', "keybase-site-verification=Lct-frBpniq-ggU6A97Vv1gyRhB_jOzHfIeigdRr2zs", TTL(86400)),
+  TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB', TTL(86400))
 )
 
