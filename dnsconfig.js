@@ -11,7 +11,7 @@ var R53 = NewDnsProvider('r53', 'ROUTE53');
 // Domains:
 
 D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
-  A('@', '69.200.236.17', TTL(3600)),
+  A('@', '68.173.132.85', TTL(3600)),
   CNAME('a', 'desertbluffs.com.', TTL(604800)),
   CNAME('b', 'desertbluffs.com.', TTL(604800)),
   CNAME('c', 'desertbluffs.com.', TTL(604800)),
