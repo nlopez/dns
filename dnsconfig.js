@@ -12,6 +12,9 @@ var R53 = NewDnsProvider('r53', 'ROUTE53');
 
 D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
   A('@', '68.173.132.85', TTL(3600)),
+  CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com"),
+  CAA("@", "issue", "letsencrypt.org"),
+  CAA("@", "issuewild", "letsencrypt.org"),
   CNAME('a', 'desertbluffs.com.', TTL(604800)),
   CNAME('b', 'desertbluffs.com.', TTL(604800)),
   CNAME('c', 'desertbluffs.com.', TTL(604800)),
