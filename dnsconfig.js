@@ -11,8 +11,7 @@ var R53 = NewDnsProvider('r53', 'ROUTE53');
 // Domains:
 
 D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
-  A('@', '45.55.233.227', TTL(3600)),
-  AAAA('@', '2604:a880:800:10::f:d001', TTL(3600)),
+  A('@', '173.68.64.132', TTL(3600)),
   A('unifi', '45.55.122.172', TTL(3600)),
   CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com"),
   CAA("@", "issue", "letsencrypt.org"),
