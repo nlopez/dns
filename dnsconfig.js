@@ -2,7 +2,7 @@
    dnsconfig.js: dnscontrol configuration file for Desert Bluffs.
 */
 
-DEFAULTS({'ns_ttl': '24h'});
+DEFAULTS({'ns_ttl': '86400'});
 
 // Providers:
 
