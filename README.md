@@ -3,14 +3,12 @@
 
 # Workflow
 ## Pre-requisites 🏁
-1. `direnv`, `git-crypt`, and `go` via `brew bundle install`
-2. `go get github.com/StackExchange/dnscontrol`
+1. Docker
+1. `git-crypt` via `brew bundle install`
 
 ## Pre-flight ✅
 1. `git-crypt unlock /path/to/key`
-2. `direnv allow`
-3. `env | grep AWS_` ensure vars are set
 
 ## Takeoff 🚀
-1. `dnscontrol preview`
-2. `dnscontrol push`
+1. `make preview`
+2. `make push`
