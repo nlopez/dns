@@ -2,17 +2,16 @@
    dnsconfig.js: dnscontrol configuration file for Desert Bluffs.
 */
 
-DEFAULTS({'ns_ttl': '86400'});
+DEFAULTS({'ns_ttl': '86400', 'cloudflare_proxy_default': 'off'});
 
 // Providers:
 
 var REG_NONE = NewRegistrar('none', 'NONE')
-var GCLOUD = NewDnsProvider('gcloud', 'GCLOUD');
-var R53 = NewDnsProvider('r53', 'ROUTE53');
+var CLOUDFLARE = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI');
 
 // Domains:
 
-D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
+D("desertbluffs.com", REG_NONE, DnsProvider(CLOUDFLARE),
   A('@', '173.68.64.113', TTL('6h')),
   A('unifi', '165.227.124.32', TTL('6h')),
   CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com"),
@@ -58,7 +57,7 @@ D("desertbluffs.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
   TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB', TTL('12h'))
 );
 
-D("radoncanyon.com", REG_NONE, DnsProvider(GCLOUD), DnsProvider(R53),
+D("radoncanyon.com", REG_NONE, DnsProvider(CLOUDFLARE),
   A('nas1', '192.168.222.149', TTL('6h')),
   A('nas1-ipmi', '192.168.222.148', TTL('6h')),
   A('nas2', '192.168.222.114', TTL('6h')),
