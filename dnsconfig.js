@@ -12,7 +12,7 @@ var R53 = NewDnsProvider('r53', 'ROUTE53');
 // Domains:
 
 D("desertbluffs.com", REG_NONE, DnsProvider(R53),
-  A('@', '173.68.64.113', TTL('6h')),
+  A('@', '68.129.168.159', TTL('6h')),
   A('unifi', '165.227.124.32', TTL('6h')),
   CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com"),
   CAA("@", "issue", "letsencrypt.org"),
