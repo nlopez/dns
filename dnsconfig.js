@@ -12,17 +12,15 @@ var R53 = NewDnsProvider('r53', 'ROUTE53');
 // Domains:
 
 D("desertbluffs.com", REG_NONE, DnsProvider(R53),
-  A('@', '68.129.168.159', TTL('6h')),
   A('unifi', '165.227.124.32', TTL('6h')),
   CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com"),
   CAA("@", "issue", "letsencrypt.org"),
   CAA("@", "issuewild", "letsencrypt.org"),
-  CNAME('*', 'desertbluffs.com.', TTL('12h')),
+  CNAME('*', 'astoria.port0.org.', TTL('12h')),
   CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.', TTL('12h')),
   CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.', TTL('12h')),
   CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.', TTL('12h')),
   CNAME('ptusb247sybmwk4i32j5lmagtmtqq7qi._domainkey', 'ptusb247sybmwk4i32j5lmagtmtqq7qi.dkim.amazonses.com.', TTL('12h')),
-  CNAME('speedtest', 'desertbluffs.com.', TTL('12h')),
   CNAME('zb14086362', 'zmverify.zoho.com.'),
   MX('@', 10, 'mx.zoho.com.', TTL('12h')),
   MX('@', 20, 'mx2.zoho.com.', TTL('12h')),
