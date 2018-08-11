@@ -44,6 +44,5 @@ D("radoncanyon.com", REG_NONE, DnsProvider(R53),
   A('wg-ev', '192.168.239.2', TTL('6h')),
   A('wg-astoria', '192.168.222.2', TTL('6h')),
   A('gw-ev', '192.168.239.1', TTL('6h')),
-  A('gw-astoria', '192.168.222.1', TTL('6h')),
-  TXT('@', 'MS=ms81992300', TTL(3600))
+  A('gw-astoria', '192.168.222.1', TTL('6h'))
 );
