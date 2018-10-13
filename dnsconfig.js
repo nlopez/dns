@@ -2,21 +2,23 @@
    dnsconfig.js: dnscontrol configuration file for Desert Bluffs.
 */
 
-DEFAULTS({'ns_ttl': '21600', 'cloudflare_proxy_default': 'off'});
+DEFAULTS({'ns_ttl': '21600'});
 
 // Providers:
 
 var REG_NONE = NewRegistrar('none', 'NONE')
 var R53 = NewDnsProvider('r53', 'ROUTE53');
+var CF = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI')
 
 // Domains:
 
-D("desertbluffs.com", REG_NONE, DnsProvider(R53),
+D("desertbluffs.com", REG_NONE, DnsProvider(CF),
   A('unifi', '165.227.124.32', TTL('6h')),
   CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com"),
   CAA("@", "issue", "letsencrypt.org"),
   CAA("@", "issuewild", "letsencrypt.org"),
   CNAME('*', 'astoria.port0.org.', TTL('1h')),
+  CNAME('e', 'astoria.port0.org.', CF_PROXY_ON, TTL('1h')),
   CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.', TTL('12h')),
   CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.', TTL('12h')),
   CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.', TTL('12h')),
