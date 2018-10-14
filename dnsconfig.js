@@ -61,7 +61,12 @@ D('radoncanyon.com', REG_NONE, DnsProvider(DNS_BIND),
   A('ns2', '192.168.222.2'),
   A('mimic', '192.168.239.100'),
   A('minaret', '192.168.239.102'),
-  A('wanderer', '192.168.239.125')
+  A('wanderer', '192.168.239.125'),
+  A('ripe30453', '192.168.239.230'),
+  A('shield', '192.168.239.235'),
+  A('switch', '192.168.239.156'),
+  A('harmonyhub', '192.168.239.54'),
+  A('ps4', '192.168.239.251')
 );
 
 // East Village
@@ -70,7 +75,12 @@ D(REV('192.168.239.0/24'), REG_NONE, DnsProvider(DNS_BIND),
   PTR('2', 'ns1.radoncanyon.com.'),
   PTR('100', 'mimic.radoncanyon.com.'),
   PTR('102', 'minaret.radoncanyon.com.'),
-  PTR('125', 'wanderer.radoncanyon.com.')
+  PTR('125', 'wanderer.radoncanyon.com.'),
+  PTR('230', 'ripe30453.radoncanyon.com.'),
+  PTR('235', 'shield.radoncanyon.com.'),
+  PTR('156', 'switch.radoncanyon.com.'),
+  PTR('54', 'harmonyhub.radoncanyon.com.'),
+  PTR('251', 'ps4.radoncanyon.com.')
 );
 
 // Astoria VLAN LAB
