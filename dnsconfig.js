@@ -51,16 +51,36 @@ D('radoncanyon.com', REG_NONE, DnsProvider(DNS_BIND),
   A('nas2', '192.168.222.114'),
   A('nas2-storage', '192.168.220.114'),
   A('nas2-ipmi', '192.168.222.113'),
-  A('cecil', '192.168.222.103'),
-  A('kube-master', '192.168.222.103'),
   A('biggs', '192.168.222.143'),
-  A('kube-node1', '192.168.222.143'),
   A('wedge', '192.168.222.144'),
-  A('kube-node2', '192.168.222.143'),
   A('wg-ev', '192.168.239.2'),
   A('wg-astoria', '192.168.222.2'),
   A('gw-ev', '192.168.239.1'),
   A('gw-astoria', '192.168.222.1'),
   A('ns1', '192.168.239.2'),
   A('ns2', '192.168.222.2')
+);
+
+// Astoria STORAGE VLAN
+D(REV('192.168.220.0/24'), REG_NONE, DnsProvider(DNS_BIND),
+  PTR('149', 'nas1-storage.radoncanyon.com.'),
+  PTR('114', 'nas2-storage.radoncanyon.com.')
+);
+
+// Astoria
+D(REV('192.168.222.0/24'), REG_NONE, DnsProvider(DNS_BIND),
+  PTR('149', 'nas1.radoncanyon.com.'),
+  PTR('148', 'nas1-ipmi.radoncanyon.com.'),
+  PTR('114', 'nas2.radoncanyon.com.'),
+  PTR('113', 'nas2-ipmi.radoncanyon.com.'),
+  PTR('143', 'biggs.radoncanyon.com.'),
+  PTR('144', 'wedge.radoncanyon.com.'),
+  PTR('1', 'gw-astoria.radoncanyon.com.'),
+  PTR('2', 'ns2.radoncanyon.com.')
+);
+
+// East Village
+D(REV('192.168.239.0/24'), REG_NONE, DnsProvider(DNS_BIND),
+  PTR('1', 'gw-ev.radoncanyon.com.'),
+  PTR('2', 'ns1.radoncanyon.com.')
 );
