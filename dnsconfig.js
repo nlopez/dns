@@ -26,21 +26,21 @@ var DNS_BIND = NewDnsProvider('bind', 'BIND', {
 // Domains:
 
 D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
-  A('unifi', '165.227.124.32', TTL('6h')),
+  A('unifi', '165.227.124.32'),
   CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com'),
   CAA('@', 'issue', 'letsencrypt.org'),
   CAA('@', 'issuewild', 'letsencrypt.org'),
-  CNAME('*', 'astoria.port0.org.', TTL('1h')),
-  CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.', TTL('12h')),
-  CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.', TTL('12h')),
-  CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.', TTL('12h')),
-  CNAME('ptusb247sybmwk4i32j5lmagtmtqq7qi._domainkey', 'ptusb247sybmwk4i32j5lmagtmtqq7qi.dkim.amazonses.com.', TTL('12h')),
+  CNAME('*', 'astoria.port0.org.'),
+  CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.'),
+  CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.'),
+  CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.'),
+  CNAME('ptusb247sybmwk4i32j5lmagtmtqq7qi._domainkey', 'ptusb247sybmwk4i32j5lmagtmtqq7qi.dkim.amazonses.com.'),
   CNAME('zb14086362', 'zmverify.zoho.com.'),
-  MX('@', 10, 'mx.zoho.com.', TTL('12h')),
-  MX('@', 20, 'mx2.zoho.com.', TTL('12h')),
-  TXT('@', 'v=spf1 mx include:zoho.com ~all', TTL('12h')),
-  TXT('_amazonses', 'nOSqNz6GuHWUV/GdUWiXEWRTTRMK/ibv6afYRtn5WtU=', TTL('12h')),
-  TXT('_keybase', 'keybase-site-verification=Lct-frBpniq-ggU6A97Vv1gyRhB_jOzHfIeigdRr2zs', TTL('12h')),
+  MX('@', 10, 'mx.zoho.com.'),
+  MX('@', 20, 'mx2.zoho.com.'),
+  TXT('@', 'v=spf1 mx include:zoho.com ~all'),
+  TXT('_amazonses', 'nOSqNz6GuHWUV/GdUWiXEWRTTRMK/ibv6afYRtn5WtU='),
+  TXT('_keybase', 'keybase-site-verification=Lct-frBpniq-ggU6A97Vv1gyRhB_jOzHfIeigdRr2zs'),
   TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB', TTL('12h'))
 );
 
