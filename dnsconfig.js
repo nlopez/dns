@@ -26,12 +26,15 @@ var DNS_BIND = NewDnsProvider('bind', 'BIND', {
 // Domains:
 
 D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
-  A('@', '71.105.243.227'),
-  A('unifi', '165.227.124.32'),
+  IGNORE('_acme-challenge'),
+  IGNORE('lga1'),
+  IGNORE('lga2'),
+  ALIAS('@', 'lga1.desertbluffs.com.'),
+  CNAME('*', '@'),
   CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
   CAA('@', 'issuewild', 'letsencrypt.org'),
   CAA('@', 'issue', 'letsencrypt.org'),
-  CNAME('*', 'astoria.port0.org.'),
+  A('unifi', '165.227.124.32'),
   CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.'),
   CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.'),
   CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.'),
@@ -42,8 +45,7 @@ D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
   TXT('@', 'v=spf1 mx include:zoho.com ~all'),
   TXT('_amazonses', 'nOSqNz6GuHWUV/GdUWiXEWRTTRMK/ibv6afYRtn5WtU='),
   TXT('_keybase', 'keybase-site-verification=Lct-frBpniq-ggU6A97Vv1gyRhB_jOzHfIeigdRr2zs'),
-  TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB'),
-  IGNORE('_acme-challenge')
+  TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB')
 );
 
 D('radoncanyon.com', REG_NONE, DnsProvider(DNS_BIND),
