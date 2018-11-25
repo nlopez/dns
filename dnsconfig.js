@@ -23,6 +23,10 @@ var DNS_BIND = NewDnsProvider('bind', 'BIND', {
   ]
 });
 
+// CF proxy "orange cloud" aliases
+var CF_PROXY_OFF = {'cloudflare_proxy': 'off'};     // Proxy disabled.
+var CF_PROXY_ON = {'cloudflare_proxy': 'on'};       // Proxy enabled.
+
 // Domains:
 
 D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
@@ -31,11 +35,11 @@ D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
   IGNORE('lga2'),
   ALIAS('@', 'lga1.desertbluffs.com.'),
   CNAME('*', '@'),
+  CNAME('e', '@', CF_PROXY_ON),
   CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
   CAA('@', 'issuewild', 'letsencrypt.org'),
   CAA('@', 'issue', 'letsencrypt.org'),
   A('unifi', '165.227.124.32'),
-  A('unms', '165.227.124.32'),
   CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.'),
   CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.'),
   CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.'),
