@@ -67,7 +67,9 @@ D('radoncanyon.com', REG_NONE, DnsProvider(DNS_BIND), DnsProvider(R53),
   A('nas2-storage', '192.168.220.114'),
   A('nas2-ipmi', '192.168.222.113'),
   A('knode1', '192.168.222.143'),
+  A('knode1-storage', '192.168.220.143'),
   A('knode2', '192.168.222.144'),
+  A('knode2-storage', '192.168.220.144'),
   A('wg-ev', '192.168.239.2'),
   A('wg-astoria', '192.168.222.2'),
   A('gw-ev', '192.168.239.1'),
@@ -117,5 +119,7 @@ D(REV('192.168.222.0/24'), REG_NONE, DnsProvider(DNS_BIND),
 // Astoria VLAN STORAGE
 D(REV('192.168.220.0/24'), REG_NONE, DnsProvider(DNS_BIND),
   PTR('149', 'nas1-storage.radoncanyon.com.'),
-  PTR('114', 'nas2-storage.radoncanyon.com.')
+  PTR('114', 'nas2-storage.radoncanyon.com.'),
+  PTR('143', 'knode1-storage.radoncanyon.com.'),
+  PTR('144', 'knode2-storage.radoncanyon.com.')
 );
