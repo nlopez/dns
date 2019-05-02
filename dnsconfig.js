@@ -121,3 +121,12 @@ D(REV('192.168.220.0/24'), REG_NONE, DnsProvider(DNS_BIND),
   PTR('143', 'knode1-storage.radoncanyon.com.'),
   PTR('144', 'knode2-storage.radoncanyon.com.')
 );
+
+D('aethertrail.com', REG_NONE, DnsProvider(R53),
+  MX('@', 10, 'mail.protonmail.ch.'),
+  MX('@', 20, 'mailsec.protonmail.ch.'),
+  TXT('@', 'protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c'),
+  TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
+  TXT('_dmarc', 'v=DMARC1; p=none; rua=mailto:dmarc@aethertrail.com'),
+  TXT('protonmail._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqK40KR7DItR/VwnMDNfNr18Ee5KHsK76NayU/tAi4BQqFFdWUL64bBjO9E/6MVKmtMyG3mJ1j6JmTxujxW6NErzn8ETV1THJm/AAosLAZ5CS6O747Tu5leXNqCDbYHnqymxMpm2DbiQlDJWH54DjdBeUYLt2GgqLUqBf0wG4BoQIDAQAB')
+)
