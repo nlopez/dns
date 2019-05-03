@@ -30,7 +30,7 @@ var CF_PROXY_ON = {'cloudflare_proxy': 'on'};       // Proxy enabled.
 
 // Domains:
 
-D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), DnsProvider(R53),
+D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), DnsProvider(R53, 0),
   IGNORE('_acme-challenge'),
   IGNORE('lga1'),
   IGNORE('lga2'),
