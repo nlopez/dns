@@ -7,6 +7,7 @@ DEFAULTS({'ns_ttl': '21600'});
 // Providers:
 
 var REG_NONE = NewRegistrar('none', 'NONE')
+var CLOUDFLARE = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI')
 var R53 = NewDnsProvider('r53', 'ROUTE53');
 var DNS_BIND = NewDnsProvider('bind', 'BIND', {
   'default_soa': {
@@ -23,9 +24,13 @@ var DNS_BIND = NewDnsProvider('bind', 'BIND', {
   ]
 });
 
+// CF proxy "orange cloud" aliases
+var CF_PROXY_OFF = {'cloudflare_proxy': 'off'};     // Proxy disabled.
+var CF_PROXY_ON = {'cloudflare_proxy': 'on'};       // Proxy enabled.
+
 // Domains:
 
-D('desertbluffs.com', REG_NONE, DnsProvider(R53),
+D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), DnsProvider(R53),
   IGNORE('_acme-challenge'),
   IGNORE('lga1'),
   IGNORE('lga2'),
