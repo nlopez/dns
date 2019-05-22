@@ -57,7 +57,7 @@ D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), DnsProvider(R53, 0),
   TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB')
 );
 
-D('radoncanyon.com', REG_NONE, DnsProvider(DNS_BIND), DnsProvider(R53),
+D('radoncanyon.com', REG_NONE, DnsProvider(DNS_BIND, 0), DnsProvider(R53),
   A('nas1', '192.168.222.149'),
   A('nas1-storage', '192.168.220.149'),
   A('nas1-ipmi', '192.168.222.148'),
