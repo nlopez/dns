@@ -30,10 +30,11 @@ var CF_PROXY_ON = {'cloudflare_proxy': 'on'};       // Proxy enabled.
 
 // Domains:
 
-D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), DnsProvider(R53, 0),
+D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
   IGNORE('_acme-challenge'),
   IGNORE('lga1'),
   IGNORE('lga2'),
+  ALIAS('@', 'lga1.desertbluffs.com.'),
   CNAME('*', 'lga1.desertbluffs.com.'),
   CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
   CAA('@', 'issuewild', 'letsencrypt.org'),
