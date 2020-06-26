@@ -2,7 +2,7 @@
    dnsconfig.js: dnscontrol configuration file for Desert Bluffs.
 */
 
-DEFAULTS({'ns_ttl': '21600'});
+DEFAULTS({ 'ns_ttl': '21600' });
 
 // Providers:
 
@@ -11,12 +11,12 @@ var CLOUDFLARE = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI')
 var R53 = NewDnsProvider('r53', 'ROUTE53');
 var DNS_BIND = NewDnsProvider('bind', 'BIND', {
   'default_soa': {
-        'master': 'ns1.radoncanyon.com.',
-        'mbox': 'abuse.example.org.',
-        'refresh': 10000,
-        'retry': 2400,
-        'expire': 604800,
-        'minttl': 3600,
+    'master': 'ns1.radoncanyon.com.',
+    'mbox': 'abuse.example.org.',
+    'refresh': 10000,
+    'retry': 2400,
+    'expire': 604800,
+    'minttl': 3600,
   },
   'default_ns': [
     'ns1.radoncanyon.com.',
@@ -25,8 +25,8 @@ var DNS_BIND = NewDnsProvider('bind', 'BIND', {
 });
 
 // CF proxy "orange cloud" aliases
-var CF_PROXY_OFF = {'cloudflare_proxy': 'off'};     // Proxy disabled.
-var CF_PROXY_ON = {'cloudflare_proxy': 'on'};       // Proxy enabled.
+var CF_PROXY_OFF = { 'cloudflare_proxy': 'off' };     // Proxy disabled.
+var CF_PROXY_ON = { 'cloudflare_proxy': 'on' };       // Proxy enabled.
 
 // Domains:
 
@@ -129,5 +129,7 @@ D('aethertrail.com', REG_NONE, DnsProvider(R53),
   TXT('@', 'protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c'),
   TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
   TXT('_dmarc', 'v=DMARC1; p=none; rua=mailto:dmarc@aethertrail.com'),
-  TXT('protonmail._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqK40KR7DItR/VwnMDNfNr18Ee5KHsK76NayU/tAi4BQqFFdWUL64bBjO9E/6MVKmtMyG3mJ1j6JmTxujxW6NErzn8ETV1THJm/AAosLAZ5CS6O747Tu5leXNqCDbYHnqymxMpm2DbiQlDJWH54DjdBeUYLt2GgqLUqBf0wG4BoQIDAQAB')
+  CNAME('protonmail._domainkey', 'protonmail._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
+  CNAME('protonmail2._domainkey', 'protonmail2._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
+  CNAME('protonmail3._domainkey', 'protonmail3._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.')
 )
