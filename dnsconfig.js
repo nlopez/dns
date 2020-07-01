@@ -31,7 +31,6 @@ var CF_PROXY_ON = { 'cloudflare_proxy': 'on' };       // Proxy enabled.
 // Domains:
 
 D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), NO_PURGE,
-  DS('@', 2371, 13, 2, '3896AD764846059B496C456BCE6DCC6B59571B1D36F2E93E1AC98F1E5C27ED0C'),
   // ignore dynamically updated records
   IGNORE('_acme-challenge'),
   IGNORE('lga1'),
