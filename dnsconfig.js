@@ -30,11 +30,17 @@ var CF_PROXY_ON = { 'cloudflare_proxy': 'on' };       // Proxy enabled.
 
 // Domains:
 
-D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE), NO_PURGE,
+D('desertbluffs.com', REG_NONE, DnsProvider(CLOUDFLARE),
   // ignore dynamically updated records
   IGNORE('_acme-challenge'),
   IGNORE('lga1'),
   IGNORE('lga2'),
+  IGNORE('[a-z]'),
+  IGNORE('heimdall'),
+  IGNORE('nextcloud'),
+  IGNORE('httpbin'),
+  IGNORE('login'),
+  ALIAS('@', 'lga1.desertbluffs.com.'),
   CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
   CAA('@', 'issuewild', 'letsencrypt.org'),
   CAA('@', 'issue', 'letsencrypt.org'),
