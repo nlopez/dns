@@ -9,6 +9,7 @@ D('desertbluffs.com', REG_R53, DnsProvider(DNS_R53),
   // ignore dynamically updated records
   IGNORE('_acme-challenge'),
   IGNORE('lga1'),
+  IGNORE('lga2'),
   IGNORE('[a-z]'),
   IGNORE('heimdall'),
   IGNORE('nextcloud'),
