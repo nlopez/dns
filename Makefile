@@ -1,5 +1,5 @@
 pwd := $(shell pwd)
-container := stackexchange/dnscontrol:v3.3.0
+container := stackexchange/dnscontrol:v3.9.0
 docker_cmd := docker run --rm -it \
 	-v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \
 	-v $(pwd)/creds.json:/dns/creds.json \

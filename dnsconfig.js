@@ -1,16 +1,17 @@
 // Providers
 
 var REG_R53 = NewRegistrar('r53', 'ROUTE53');
-var DNS_R53 = NewDnsProvider('r53', 'ROUTE53');
+var DSP_R53 = NewDnsProvider('r53', 'ROUTE53');
+var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", 'CLOUDFLAREAPI');
 
 // Domains
 
-D('desertbluffs.com', REG_R53, DnsProvider(DNS_R53), NO_PURGE,
+D('desertbluffs.com', REG_R53, DnsProvider(DSP_CLOUDFLARE), NO_PURGE,
   A('unifi', '68.183.136.131'),
   AAAA('unifi', '2604:a880:400:d1::81a:6001'),
-  CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
-  CAA('@', 'issue', 'letsencrypt.org'),
-  CAA('@', 'issuewild', 'letsencrypt.org'),
+  //CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
+  //CAA('@', 'issue', 'letsencrypt.org'),
+  //CAA('@', 'issuewild', 'letsencrypt.org'),
   CNAME('ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey', 'ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.'),
   CNAME('gc4caluqqezmfk6xanwpdpw5eytglrkn._domainkey', 'gc4caluqqezmfk6xanwpdpw5eytglrkn.dkim.amazonses.com.'),
   CNAME('hypnotoad', 'hypnotoad.desertbluffs.com.s3-website-us-east-1.amazonaws.com.'),
@@ -29,7 +30,7 @@ D('desertbluffs.com', REG_R53, DnsProvider(DNS_R53), NO_PURGE,
   TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB')
 );
 
-D('radoncanyon.com', REG_R53, DnsProvider(DNS_R53),
+D('radoncanyon.com', REG_R53, DnsProvider(DSP_R53),
   A('192.168.222.3.lga1', '192.168.222.3'),
   A('gw.lga1', '192.168.222.1'),
   A('knode1.lga1', '192.168.222.143'),
@@ -46,7 +47,7 @@ D('radoncanyon.com', REG_R53, DnsProvider(DNS_R53),
   A('wg.lga1', '192.168.222.2')
 );
 
-D('aethertrail.com', REG_R53, DnsProvider(DNS_R53),
+D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
   MX('@', 10, 'mail.protonmail.ch.'),
   MX('@', 20, 'mailsec.protonmail.ch.'),
   TXT('@', 'protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c'),
