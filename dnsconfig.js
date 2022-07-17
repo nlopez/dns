@@ -57,3 +57,5 @@ D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
   CNAME('protonmail2._domainkey', 'protonmail2._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
   CNAME('protonmail3._domainkey', 'protonmail3._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.')
 )
+
+D('nulogorsk.com', REG_R53, DnsProvider(DSP_R53))
