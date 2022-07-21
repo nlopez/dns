@@ -7,6 +7,7 @@ var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", 'CLOUDFLAREAPI');
 // Domains
 
 D('desertbluffs.com', REG_R53, DnsProvider(DSP_CLOUDFLARE), NO_PURGE,
+  CF_PROXY_DEFAULT_ON,
   A('unifi', '68.183.136.131'),
   AAAA('unifi', '2604:a880:400:d1::81a:6001'),
   //CAA('@', 'iodef', 'mailto:sslabuse@desertbluffs.com', CAA_CRITICAL),
@@ -58,4 +59,7 @@ D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
   CNAME('protonmail3._domainkey', 'protonmail3._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.')
 )
 
-D('nulogorsk.com', REG_R53, DnsProvider(DSP_R53))
+D('nulogorsk.com', REG_R53, DnsProvider(DSP_R53),
+  TXT('@', 'google-site-verification=HsYPjjwyPCKuMfy6lxLKniooz4gHLAGWly1O6i8l6tw', TTL(3600) ),
+  TXT('fts', 'google-site-verification=xbFJ6U6Ivneuq94IL2xwXYyKW9o3Nke0YJXOanj49mM')
+)
