@@ -45,7 +45,8 @@ D('radoncanyon.com', REG_R53, DnsProvider(DSP_R53),
   A('nas2-ipmi.lga1', '192.168.222.113'),
   A('nas2-storage.lga1', '192.168.220.114'),
   A('ns1.lga1', '192.168.222.2'),
-  A('wg.lga1', '192.168.222.2')
+  A('odroid.lga1', '192.168.222.2'),
+  A('odroid.lga2', '192.168.239.2')
 );
 
 D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
@@ -60,6 +61,5 @@ D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
 )
 
 D('nulogorsk.com', REG_R53, DnsProvider(DSP_R53),
-  TXT('@', 'google-site-verification=HsYPjjwyPCKuMfy6lxLKniooz4gHLAGWly1O6i8l6tw', TTL(3600) ),
-  TXT('fts', 'google-site-verification=xbFJ6U6Ivneuq94IL2xwXYyKW9o3Nke0YJXOanj49mM')
+  TXT('@', 'protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57', TTL(3600))
 )
