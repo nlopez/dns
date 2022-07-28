@@ -7,6 +7,7 @@ var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", 'CLOUDFLAREAPI');
 // Domains
 
 D('desertbluffs.com', REG_R53, DnsProvider(DSP_CLOUDFLARE), NO_PURGE,
+  DefaultTTL("1h"),
   CF_PROXY_DEFAULT_OFF,
   A('unifi', '68.183.136.131'),
   AAAA('unifi', '2604:a880:400:d1::81a:6001'),
@@ -32,6 +33,7 @@ D('desertbluffs.com', REG_R53, DnsProvider(DSP_CLOUDFLARE), NO_PURGE,
 );
 
 D('radoncanyon.com', REG_R53, DnsProvider(DSP_R53),
+  DefaultTTL("1h"),
   A('192.168.222.3.lga1', '192.168.222.3'),
   A('gw.lga1', '192.168.1.1'),
   A('knode1.lga1', '192.168.222.143'),
@@ -50,8 +52,10 @@ D('radoncanyon.com', REG_R53, DnsProvider(DSP_R53),
 );
 
 D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
+  DefaultTTL("1h"),
   MX('@', 10, 'mail.protonmail.ch.'),
   MX('@', 20, 'mailsec.protonmail.ch.'),
+  // Keep this for continued ProtonMail verification
   TXT('@', 'protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c'),
   TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
   TXT('_dmarc', 'v=DMARC1; p=none; rua=mailto:dmarc@aethertrail.com'),
@@ -61,5 +65,9 @@ D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
 )
 
 D('nulogorsk.com', REG_R53, DnsProvider(DSP_R53),
-  TXT('@', 'protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57', TTL(3600))
+  DefaultTTL("1h"),
+  MX('@', 10, 'mail.protonmail.ch.'),
+  MX('@', 20, 'mailsec.protonmail.ch.'),
+  // Keep this for continued ProtonMail verification
+  TXT('@', 'protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57')
 )
