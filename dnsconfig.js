@@ -53,21 +53,26 @@ D('radoncanyon.com', REG_R53, DnsProvider(DSP_R53),
 
 D('aethertrail.com', REG_R53, DnsProvider(DSP_R53),
   DefaultTTL("1h"),
-  MX('@', 10, 'mail.protonmail.ch.'),
-  MX('@', 20, 'mailsec.protonmail.ch.'),
   // Keep this for continued ProtonMail verification
   TXT('@', 'protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c'),
+  MX('@', 10, 'mail.protonmail.ch.'),
+  MX('@', 20, 'mailsec.protonmail.ch.'),
   TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
-  TXT('_dmarc', 'v=DMARC1; p=none; rua=mailto:dmarc@aethertrail.com'),
   CNAME('protonmail._domainkey', 'protonmail._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
   CNAME('protonmail2._domainkey', 'protonmail2._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
-  CNAME('protonmail3._domainkey', 'protonmail3._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.')
+  CNAME('protonmail3._domainkey', 'protonmail3._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
+  TXT('_dmarc', 'v=DMARC1; p=quarantine; rua=mailto:dmarc@aethertrail.com')
 )
 
 D('nulogorsk.com', REG_R53, DnsProvider(DSP_R53),
   DefaultTTL("1h"),
+  // Keep this for continued ProtonMail verification
+  TXT('@', 'protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57'),
   MX('@', 10, 'mail.protonmail.ch.'),
   MX('@', 20, 'mailsec.protonmail.ch.'),
-  // Keep this for continued ProtonMail verification
-  TXT('@', 'protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57')
+  TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
+  CNAME('protonmail._domainkey', 'protonmail.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.'),
+  CNAME('protonmail2._domainkey', 'protonmail2.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.'),
+  CNAME('protonmail3._domainkey', 'protonmail3.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.'),
+  TXT('_dmarc', 'v=DMARC1; p=quarantine; rua=mailto:dmarc@nulogorsk.com')
 )
