@@ -6,7 +6,10 @@ var DSP_CLOUDFLARE = NewDnsProvider("cloudflare", 'CLOUDFLAREAPI');
 
 // Domains
 
-D('desertbluffs.com', REG_R53, DnsProvider(DSP_CLOUDFLARE), NO_PURGE,
+D('desertbluffs.com', REG_R53,
+  NO_PURGE,
+  DnsProvider(DSP_R53, 0),
+  DnsProvider(DSP_CLOUDFLARE),
   DefaultTTL("1h"),
   CF_PROXY_DEFAULT_OFF,
   A('unifi', '68.183.136.131'),
@@ -20,7 +23,7 @@ D('desertbluffs.com', REG_R53, DnsProvider(DSP_CLOUDFLARE), NO_PURGE,
   CNAME('lga1', 'desertbluffs.com.'),
   CNAME('ptusb247sybmwk4i32j5lmagtmtqq7qi._domainkey', 'ptusb247sybmwk4i32j5lmagtmtqq7qi.dkim.amazonses.com.'),
   CNAME('zb14086362', 'zmverify.zoho.com.'),
-  CNAME('*', 'desertbluffs.com.', CF_PROXY_ON),
+  CNAME('*', 'desertbluffs.com.'),
   MX('@', 10, 'mx.zoho.com.'),
   MX('@', 20, 'mx2.zoho.com.'),
   MX('@', 50, 'mx3.zoho.com.'),
