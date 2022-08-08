@@ -1,17 +1,15 @@
 // Providers
 
-var REG_R53 = NewRegistrar('r53', 'ROUTE53');
+var REG_NONE = NewRegistrar('none', 'NONE');
 var DNS_CLOUDFLARE = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI');
 var DNS_DIGITALOCEAN = NewDnsProvider('digitalocean', 'DIGITALOCEAN');
-var DNS_R53 = NewDnsProvider('r53', 'ROUTE53');
 
 // Domains
 
 D('desertbluffs.com',
-  REG_R53,
+  REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DnsProvider(DNS_DIGITALOCEAN, 0),
-  DnsProvider(DNS_R53, 0),
   CF_PROXY_DEFAULT_OFF,
   IGNORE_NAME('lga1'),
   IGNORE_NAME('lga2'),
@@ -39,10 +37,9 @@ D('desertbluffs.com',
 );
 
 D('radoncanyon.com',
-  REG_R53,
+  REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DnsProvider(DNS_DIGITALOCEAN, 0),
-  DnsProvider(DNS_R53, 0),
   A('192.168.222.3.lga1', '192.168.222.3'),
   A('gw.lga1', '192.168.1.1'),
   A('knode1.lga1', '192.168.222.143'),
@@ -61,10 +58,9 @@ D('radoncanyon.com',
 );
 
 D('aethertrail.com',
-  REG_R53,
+  REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DnsProvider(DNS_DIGITALOCEAN, 0),
-  DnsProvider(DNS_R53, 0),
   // Keep this for continued ProtonMail verification
   TXT('@', 'protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c'),
   MX('@', 10, 'mail.protonmail.ch.'),
@@ -77,10 +73,9 @@ D('aethertrail.com',
 )
 
 D('nulogorsk.com',
-  REG_R53,
+  REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DnsProvider(DNS_DIGITALOCEAN, 0),
-  DnsProvider(DNS_R53, 0),
   // Keep this for continued ProtonMail verification
   TXT('@', 'protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57'),
   MX('@', 10, 'mail.protonmail.ch.'),
