@@ -54,7 +54,8 @@ D('radoncanyon.com',
   A('nas2-storage.lga1', '192.168.220.114'),
   A('ns1.lga1', '192.168.222.2'),
   A('odroid.lga1', '192.168.222.2'),
-  A('odroid.lga2', '192.168.239.2')
+  A('odroid.lga2', '192.168.239.2'),
+  A('avr.lga2', '192.168.239.253')
 );
 
 D('aethertrail.com',
