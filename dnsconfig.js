@@ -70,7 +70,7 @@ D('radoncanyon.com',
   A('nas2-storage.lga1', '192.168.220.114'),
   A('ns1.lga1', '192.168.222.2'),
   A('odroid.lga1', '192.168.222.2'),
-  A('*', '192.168.222.232')
+  A('d', '192.168.222.232')
 );
 
 D('lga2.radoncanyon.com',
