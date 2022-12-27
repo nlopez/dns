@@ -1,8 +1,24 @@
 // Providers
 
-var REG_NONE = NewRegistrar('none', 'NONE');
-var DNS_CLOUDFLARE = NewDnsProvider('cloudflare', 'CLOUDFLAREAPI');
-var DNS_DIGITALOCEAN = NewDnsProvider('digitalocean', 'DIGITALOCEAN');
+var REG_NONE = NewRegistrar('none');
+var DNS_CLOUDFLARE = NewDnsProvider('cloudflare');
+var DNS_DIGITALOCEAN = NewDnsProvider('digitalocean');
+var DNS_BIND = NewDnsProvider("bind", {
+  "default_soa": {
+    "master": "ns1.radoncanyoncom.",
+    "mbox": "dnsadmin.radoncanyoncom.",
+    "refresh": 3600,
+    "retry": 600,
+    "expire": 604800,
+    "minttl": 1440,
+  },
+  "default_ns": [
+    "ns1.radoncanyoncom.",
+    "ns2.radoncanyoncom.",
+    "ns3.radoncanyoncom.",
+    "ns4.radoncanyoncom."
+  ]
+})
 
 // Domains
 
@@ -39,6 +55,7 @@ D('radoncanyon.com',
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DnsProvider(DNS_DIGITALOCEAN, 0),
+  DnsProvider(DNS_BIND, 0),
   A('192.168.222.3.lga1', '192.168.222.3'),
   A('gw.lga1', '192.168.1.1'),
   A('knode1.lga1', '192.168.222.143'),
@@ -53,8 +70,27 @@ D('radoncanyon.com',
   A('nas2-storage.lga1', '192.168.220.114'),
   A('ns1.lga1', '192.168.222.2'),
   A('odroid.lga1', '192.168.222.2'),
-  A('odroid.lga2', '192.168.239.2'),
-  A('avr.lga2', '192.168.239.253')
+  A('*', '192.168.222.232')
+);
+
+D('lga2.radoncanyon.com',
+  REG_NONE,
+  DnsProvider(DNS_BIND, 0),
+  A('shimmer', '192.168.239.34'),
+  A('steamdock', '192.168.239.36'),
+  A('avr', '192.168.239.253'),
+  A('nswitch1', '192.168.239.156'),
+  A('nswitch2', '192.168.239.48'),
+  A('mammon', '192.168.239.11'),
+  A('oolong', '192.168.239.231'),
+  A('lg-c1', '192.168.239.15'),
+  A('ddog', '192.168.239.33'),
+  A('caldigit-eth', '192.168.239.14'),
+  A('matisse', '192.168.239.211'),
+  A('odroid', '192.168.239.2'),
+  A('harmony-hub', '192.168.239.54'),
+  A('wanderer', '192.168.239.27'),
+  A('argus', '192.168.239.32')
 );
 
 D('aethertrail.com',
