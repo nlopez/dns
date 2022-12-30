@@ -5,18 +5,15 @@ var DNS_CLOUDFLARE = NewDnsProvider('cloudflare');
 var DNS_DIGITALOCEAN = NewDnsProvider('digitalocean');
 var DNS_BIND = NewDnsProvider("bind", {
   "default_soa": {
-    "master": "ns1.radoncanyoncom.",
-    "mbox": "dnsadmin.radoncanyoncom.",
+    "master": "ns1.radoncanyon.com.",
+    "mbox": "dnsadmin.radoncanyon.com.",
     "refresh": 3600,
     "retry": 600,
     "expire": 604800,
     "minttl": 1440,
   },
   "default_ns": [
-    "ns1.radoncanyoncom.",
-    "ns2.radoncanyoncom.",
-    "ns3.radoncanyoncom.",
-    "ns4.radoncanyoncom."
+    "ns1.radoncanyon.com.",
   ]
 })
 
@@ -54,10 +51,8 @@ D('desertbluffs.com',
 
 D('radoncanyon.com',
   REG_NONE,
-  DnsProvider(DNS_CLOUDFLARE),
-  DnsProvider(DNS_DIGITALOCEAN, 0),
   DnsProvider(DNS_BIND, 0),
-  NO_PURGE,
+  A('ns1', '127.0.0.3'),
   A('192.168.222.3.lga1', '192.168.222.3'),
   A('gw.lga1', '192.168.1.1'),
   A('knode1.lga1', '192.168.222.143'),
@@ -70,29 +65,23 @@ D('radoncanyon.com',
   A('nas2.lga1', '192.168.222.114'),
   A('nas2-ipmi.lga1', '192.168.222.113'),
   A('nas2-storage.lga1', '192.168.220.114'),
-  A('ns1.lga1', '192.168.222.2'),
   A('odroid.lga1', '192.168.222.2'),
-  A('internal-nginx', '192.168.222.232')
-);
-
-D('lga2.radoncanyon.com',
-  REG_NONE,
-  DnsProvider(DNS_BIND, 0),
-  A('shimmer', '192.168.239.34'),
-  A('steamdock', '192.168.239.36'),
-  A('avr', '192.168.239.253'),
-  A('nswitch1', '192.168.239.156'),
-  A('nswitch2', '192.168.239.48'),
-  A('mammon', '192.168.239.11'),
-  A('oolong', '192.168.239.231'),
-  A('lg-c1', '192.168.239.15'),
-  A('ddog', '192.168.239.33'),
-  A('caldigit-eth', '192.168.239.14'),
-  A('matisse', '192.168.239.211'),
-  A('odroid', '192.168.239.2'),
-  A('harmony-hub', '192.168.239.54'),
-  A('wanderer', '192.168.239.27'),
-  A('argus', '192.168.239.32')
+  A('internal-nginx', '192.168.222.232'),
+  A('shimmer.lga2', '192.168.239.34'),
+  A('steamdock.lga2', '192.168.239.36'),
+  A('avr.lga2', '192.168.239.253'),
+  A('nswitch1.lga2', '192.168.239.156'),
+  A('nswitch2.lga2', '192.168.239.48'),
+  A('mammon.lga2', '192.168.239.11'),
+  A('oolong.lga2', '192.168.239.231'),
+  A('lg-c1.lga2', '192.168.239.15'),
+  A('ddog.lga2', '192.168.239.33'),
+  A('caldigit-eth.lga2', '192.168.239.14'),
+  A('matisse.lga2', '192.168.239.211'),
+  A('odroid.lga2', '192.168.239.2'),
+  A('harmony-hub.lga2', '192.168.239.54'),
+  A('wanderer.lga2', '192.168.239.27'),
+  A('argus.lga2', '192.168.239.32')
 );
 
 D('aethertrail.com',
