@@ -73,6 +73,7 @@ D('desertbluffs.com',
   CNAME('z', 'lga1.desertbluffs.com.'),
   CNAME('httpbin', 'lga1.desertbluffs.com.'),
   CNAME('nitter', 'lga1.desertbluffs.com.'),
+  CNAME('breezewiki', 'lga1.desertbluffs.com.'),
   CNAME('login2', 'lga1.desertbluffs.com.'),
   CNAME('xn--st9h', 'lga1.desertbluffs.com.')
 );
