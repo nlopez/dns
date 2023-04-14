@@ -113,6 +113,7 @@ D('radoncanyon.com',
   A('harmony-hub.lga2', '192.168.239.54'),
   A('wanderer.lga2', '192.168.239.27'),
   A('argus.lga2', '192.168.239.32'),
+  A('medusa.lga1', '192.168.221.191'),
   TXT('@', 'google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY'),
   // https://www.gov.uk/guidance/protect-domains-that-dont-send-email
   TXT('@', 'v=spf1 -all'),
