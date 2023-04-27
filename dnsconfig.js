@@ -39,10 +39,11 @@ D('desertbluffs.com',
   MX('@', 20, 'mx2.zoho.com.'),
   MX('@', 50, 'mx3.zoho.com.'),
   TXT('@', 'v=spf1 mx include:zoho.com include:ses.desertbluffs.com ~all'),
+  TXT('*', 'v=spf1 -all'),
   TXT('@', 'google-site-verification=NNYObey8Yje_tBPGc8bIsGlU5ii5KAePBJvDVGO2S9M'),
   MX('ses', 10, 'feedback-smtp.us-east-1.amazonses.com.'),
   TXT('_amazonses', 'nOSqNz6GuHWUV/GdUWiXEWRTTRMK/ibv6afYRtn5WtU='),
-  TXT('_dmarc', 'v=DMARC1; p=reject; pct=100; rua=mailto:itadso9z@ag.dmarcian.com'),
+  TXT('_dmarc', 'v=DMARC1; p=reject; pct=100; rua=mailto:itadso9z@ag.us.dmarcian.com'),
   TXT('ses', 'v=spf1 include:amazonses.com ~all'),
   TXT('zoho._domainkey', 'v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCIqHMhuUXI0KCxNVfkJpHSKVKqFFGi5zB2xmnvsz6tkKNSUHpDLUg2PXy3xkSep9V0XKMjD8zWSRcjFUCj/JB0d3WGdJ7RblrKDpMqkj4M8dWJPCkCrLFLw2ET6D2eCx0W/zrW1foAP/HcXv10QYiE5iOh+dUNHTyLFTHJzzVnoQIDAQAB'),
   CNAME('a', 'lga1.desertbluffs.com.'),
@@ -116,9 +117,9 @@ D('radoncanyon.com',
   A('medusa.lga1', '192.168.221.191'),
   TXT('@', 'google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY'),
   // https://www.gov.uk/guidance/protect-domains-that-dont-send-email
-  TXT('@', 'v=spf1 -all'),
+  TXT('*', 'v=spf1 -all'),
   TXT('*._domainkey', 'v=DKIM1; p='),
-  TXT('_dmarc', 'v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; fo=1; rua=mailto:dmarc@aethertrail.com'),
+  TXT('_dmarc', 'v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; fo=1; rua=mailto:itadso9z@ag.us.dmarcian.com'),
   MX('@', 0, '.')
 );
 
@@ -131,11 +132,12 @@ D('aethertrail.com',
   MX('@', 10, 'mail.protonmail.ch.'),
   MX('@', 20, 'mailsec.protonmail.ch.'),
   TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
+  TXT('*', 'v=spf1 -all'),
   TXT('@', 'google-site-verification=dvq0zeVnXreX-ORHQopNOs_c7T3fqdl5LAATDoL6miU'),
   CNAME('protonmail._domainkey', 'protonmail._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
   CNAME('protonmail2._domainkey', 'protonmail2._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
   CNAME('protonmail3._domainkey', 'protonmail3._domainkey.d37mwtwdoeonibgpu5jnsfnzrjnqm5p4ifgp2plkf5r4wkgmkrlha.domains.proton.ch.'),
-  TXT('_dmarc', 'v=DMARC1; p=quarantine; rua=mailto:dmarc@aethertrail.com')
+  TXT('_dmarc', 'v=DMARC1; p=quarantine; rua=mailto:itadso9z@ag.us.dmarcian.com')
 )
 
 D('nulogorsk.com',
@@ -147,9 +149,10 @@ D('nulogorsk.com',
   MX('@', 10, 'mail.protonmail.ch.'),
   MX('@', 20, 'mailsec.protonmail.ch.'),
   TXT('@', 'v=spf1 include:_spf.protonmail.ch mx ~all'),
+  TXT('*', 'v=spf1 -all'),
   CNAME('protonmail._domainkey', 'protonmail.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.'),
   CNAME('protonmail2._domainkey', 'protonmail2.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.'),
   CNAME('protonmail3._domainkey', 'protonmail3.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.'),
-  TXT('_dmarc', 'v=DMARC1; p=quarantine; rua=mailto:dmarc@nulogorsk.com'),
+  TXT('_dmarc', 'v=DMARC1; p=quarantine; rua=mailto:itadso9z@ag.us.dmarcian.com'),
   TXT('@', 'google-site-verification=5812hCoCmKwaI_0BOxwDLgllxUt0Z1zF8xMVGpnJSJ4')
 )
