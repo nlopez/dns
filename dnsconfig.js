@@ -77,7 +77,9 @@ D('desertbluffs.com',
   TXT('twitterminator.nitter', 'f04c73b40d28855e6e50f49456dd6b37a0c922fc40dc78f29a7dd13bd19abadd'),
   CNAME('fandom', 'lga1.desertbluffs.com.'),
   CNAME('login2', 'lga1.desertbluffs.com.'),
-  CNAME('xn--st9h', 'lga1.desertbluffs.com.')
+  CNAME('xn--st9h', 'lga1.desertbluffs.com.'),
+  CNAME('satisfactory', 'lga1.desertbluffs.com.'),
+  A('palworld', '159.65.243.200')
 );
 
 D('radoncanyon.com',
