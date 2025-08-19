@@ -21,7 +21,7 @@ var DNS_BIND = NewDnsProvider("bind", {
 D('desertbluffs.com',
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
-  CF_PROXY_DEFAULT_ON,
+  CF_PROXY_DEFAULT_OFF,
   IGNORE_NAME('lga1', 'A'),
   IGNORE_NAME('lga2', 'A'),
   IGNORE("_acme-challenge", "TXT"),
