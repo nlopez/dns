@@ -100,7 +100,8 @@ D('radoncanyon.com',
   MX('@', 0, '.'),
   NS('sslip', 'ns-aws.sslip.io.'),
   NS('sslip', 'ns-gce.sslip.io.'),
-  NS('sslip', 'ns-azure.sslip.io.')
+  NS('sslip', 'ns-azure.sslip.io.'),
+  A('e', '10.43.64.10'),
 );
 
 D('aethertrail.com',
