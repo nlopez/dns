@@ -73,6 +73,7 @@ D('desertbluffs.com',
   CNAME('x', 'lga1.desertbluffs.com.'),
   CNAME('y', 'lga1.desertbluffs.com.'),
   CNAME('z', 'lga1.desertbluffs.com.'),
+  CNAME('shaarli', 'lga1.desertbluffs.com.'),
   CNAME('httpbin', 'lga1.desertbluffs.com.'),
   CNAME('fandom', 'lga1.desertbluffs.com.'),
   CNAME('xn--st9h', 'lga1.desertbluffs.com.')
