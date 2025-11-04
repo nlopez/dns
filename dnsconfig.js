@@ -21,6 +21,7 @@ var DNS_BIND = NewDnsProvider("bind", {
 D('desertbluffs.com',
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
+  DefaultTTL(1), // Auto
   NO_PURGE,
   CF_PROXY_DEFAULT_OFF,
   IGNORE_NAME('lga1', 'A'),
@@ -53,6 +54,7 @@ D('desertbluffs.com',
 D('radoncanyon.com',
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
+  DefaultTTL(1), // Auto
   NO_PURGE,
   CF_PROXY_DEFAULT_OFF,
   IGNORE("_acme-challenge", "TXT"),
@@ -79,6 +81,7 @@ D('radoncanyon.com',
 D('aethertrail.com',
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
+  DefaultTTL(1), // Auto
   CF_PROXY_DEFAULT_OFF,
   // Keep this for continued ProtonMail verification
   TXT('@', '"protonmail-verification=f1ab807d903a45b94591fa70864d795a030e118c"'),
