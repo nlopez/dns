@@ -1,0 +1,71 @@
+name: "dnscontrol-run"
+description: >
+  Composite helper action that centralizes pinned container and action refs for workflows.
+  Use this action to expose a single source-of-truth for pinned image digests and action
+  commit SHAs so multiple workflows can reuse them without duplicating values.
+
+# Optional inputs allow overriding pins (useful in temporary test branches).
+inputs:
+  dns_img:
+    description: "Pinned dnscontrol container (digest form)."
+    required: false
+    default: "stackexchange/dnscontrol@sha256:d36bacfc948bb37b1d09a465cd5c5127458cf9aa4e8226e9cbeefeb60ac40a12"
+  checkout_ref:
+    description: "Pinned actions/checkout commit SHA."
+    required: false
+    default: "actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5"
+  upload_artifact_ref:
+    description: "Pinned actions/upload-artifact commit SHA."
+    required: false
+    default: "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02"
+  github_script_ref:
+    description: "Pinned actions/github-script commit SHA."
+    required: false
+    default: "actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410"
+
+outputs:
+  dns_img:
+    description: "Resolved dnscontrol image reference (digest)."
+    value: ${{ steps.set.outputs.dns_img }}
+  checkout_ref:
+    description: "Resolved actions/checkout ref (SHA)."
+    value: ${{ steps.set.outputs.checkout_ref }}
+  upload_artifact_ref:
+    description: "Resolved actions/upload-artifact ref (SHA)."
+    value: ${{ steps.set.outputs.upload_artifact_ref }}
+  github_script_ref:
+    description: "Resolved actions/github-script ref (SHA)."
+    value: ${{ steps.set.outputs.github_script_ref }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: set
+      name: Set pinned refs outputs
+      shell: bash
+      run: |
+        # Write outputs using $GITHUB_OUTPUT so they are available to the parent workflow
+        echo "dns_img=${{ inputs.dns_img }}" >> $GITHUB_OUTPUT
+        echo "checkout_ref=${{ inputs.checkout_ref }}" >> $GITHUB_OUTPUT
+        echo "upload_artifact_ref=${{ inputs.upload_artifact_ref }}" >> $GITHUB_OUTPUT
+        echo "github_script_ref=${{ inputs.github_script_ref }}" >> $GITHUB_OUTPUT
+
+# Usage example (in a workflow):
+#
+# jobs:
+#   prepare:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Load pinned refs
+#         id: pins
+#         uses: ./.github/actions/dnscontrol-run
+#
+#       - name: Use pinned dnscontrol image
+#         run: |
+#           echo "Using dns image: ${{ steps.pins.outputs.dns_img }}"
+#
+# In other jobs you can reference the outputs as: ${{ steps.pins.outputs.checkout_ref }}
+#
+# Notes:
+# - Keep this action in-repo so workflows can `uses: ./.github/actions/dnscontrol-run`.
+# - To update pins, change the defaults above or pass inputs when using the action.

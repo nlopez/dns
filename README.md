@@ -1,7 +1,8 @@
 # dns
-[dnscontrol](https://github.com/StackOverflow/dnscontrol) management for my personal domains
+[dnscontrol](https://github.com/StackExchange/dnscontrol) management for my personal domains
 
-# Dependencies
+# Dependencies for local runs
+* Docker
 * `op` -- 1Password CLI
 * `direnv`
 

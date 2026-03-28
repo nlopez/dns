@@ -13,7 +13,7 @@ preview: creds
 push: creds
 	@$(docker_cmd) push
 
-creds:
+creds: creds.json
 	@test -s .envrc || op inject --in-file .envrc.tpl --out-file .envrc --force --file-mode 0600 && direnv allow
 
 clean:
