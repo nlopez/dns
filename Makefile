@@ -1,5 +1,6 @@
+.ONESHELL:
 pwd := $(shell pwd)
-container := stackexchange/dnscontrol:4.24.0
+container := stackexchange/dnscontrol:4.36.1
 docker_cmd := docker run --rm \
 	-v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \
 	-v $(pwd):/work \
@@ -8,13 +9,17 @@ docker_cmd := docker run --rm \
 	--workdir /work $(container)
 
 preview: creds
-	@$(docker_cmd) preview
+	@direnv allow && $(docker_cmd) preview
 
 push: creds
 	@$(docker_cmd) push
 
-creds:
-	@test -s .envrc || op inject --in-file .envrc.tpl --out-file .envrc --force --file-mode 0600 && direnv allow
+creds: check
+	@test -s .env || op inject --in-file $(pwd)/.env.tpl --out-file $(pwd)/.env
+
+check:
+	@$(docker_cmd) version
+	@$(docker_cmd) check
 
 clean:
-	@rm -v .envrc
+	@rm -v .env
