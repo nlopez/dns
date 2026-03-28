@@ -1,13 +1,5 @@
 name: "DNS Preview on PR"
 
-# Pinned refs and images to make future updates easier.
-# Update these anchored values in one place when bumping versions.
-x-pinned:
-  dnscontrol_img: &dnscontrol_img "stackexchange/dnscontrol@sha256:d36bacfc948bb37b1d09a465cd5c5127458cf9aa4e8226e9cbeefeb60ac40a12"
-  checkout_ref: &checkout_ref "actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5"
-  upload_artifact_ref: &upload_artifact_ref "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02"
-  github_script_ref: &github_script_ref "actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410"
-
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
@@ -19,23 +11,10 @@ permissions:
   pull-requests: write
 
 jobs:
-  pins:
-    runs-on: ubuntu-latest
-    outputs:
-      dns_img: ${{ steps.set.outputs.dns_img }}
-      checkout_ref: ${{ steps.set.outputs.checkout_ref }}
-      upload_artifact_ref: ${{ steps.set.outputs.upload_artifact_ref }}
-      github_script_ref: ${{ steps.set.outputs.github_script_ref }}
-    steps:
-      - id: set
-        name: Load pinned refs
-        uses: ./.github/actions/dnscontrol-run
-
   preview:
-    needs: pins
     runs-on: ubuntu-latest
     container:
-      image: ${{ needs.pins.outputs.dns_img }}
+      image: "stackexchange/dnscontrol@sha256:d36bacfc948bb37b1d09a465cd5c5127458cf9aa4e8226e9cbeefeb60ac40a12"
     concurrency:
       group: "dns-preview-${{ github.event.pull_request.number }}"
       cancel-in-progress: true
@@ -44,7 +23,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - name: Checkout
-        uses: ${{ needs.pins.outputs.checkout_ref }}
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
 
       - name: Verify dnscontrol binary
         run: |
@@ -59,18 +38,18 @@ jobs:
           dnscontrol preview 2>&1 | tee preview.txt
 
       - name: Upload preview artifact
-        uses: ${{ needs.pins.outputs.upload_artifact_ref }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: dns-preview
           path: preview.txt
 
       - name: Comment preview on PR
-        uses: ${{ needs.pins.outputs.github_script_ref }}
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410
         with:
           script: |
             const fs = require('fs');
             const body = fs.readFileSync('preview.txt', 'utf8');
-            const max = 60000; // keep comment reasonably sized
+            const max = 60000; // keep comment beneath the 65536 character limit
             const truncated = body.length > max ? body.slice(0, max) + '\n\n[truncated]' : body;
             const commentBody = "DNS preview output:\n\n```\n" + truncated + "\n```";
             const pr = context.payload.pull_request;
