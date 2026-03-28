@@ -1,0 +1,97 @@
+name: "Apply DNS on merge to main"
+
+# Trigger when commits are pushed to main (e.g. after PR merge)
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "dnsconfig.js"
+
+# Limit concurrent runs so only one apply runs at a time
+concurrency:
+  group: "dns-apply-main"
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  # pins job removed — workflows use static, pinned refs directly.
+  # The in-repo composite action remains available for ad-hoc pin overrides,
+  # but using dynamic expressions in `uses:` or `container.image:` is not supported
+  # by GitHub Actions, so the apply job below uses static pinned refs.
+
+  approval:
+    name: Await manual approval
+    runs-on: ubuntu-latest
+    # Request access to the protected environment to trigger GitHub's required reviewers / manual approval.
+    environment:
+      name: production
+    steps:
+      - name: Notify awaiting approval
+        run: |
+          echo "This job requests the 'production' environment and will pause until an approver grants access."
+          echo "Once approved, the 'apply' job will proceed."
+
+  apply:
+    name: Apply DNS changes
+    needs: approval
+    runs-on: ubuntu-latest
+    container:
+      image: "stackexchange/dnscontrol@sha256:d36bacfc948bb37b1d09a465cd5c5127458cf9aa4e8226e9cbeefeb60ac40a12"
+    # It's fine to reference the environment again; approval on the same environment will allow continuation.
+    environment: production
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Verify dnscontrol binary
+        run: |
+          set -euo pipefail
+          dnscontrol --version
+
+      - name: Show changed files
+        run: |
+          echo "Commit: $GITHUB_SHA"
+          git --no-pager show --name-only --pretty=format: $GITHUB_SHA || true
+
+      - name: Ensure required secrets are present
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] ; then
+            echo "Missing CLOUDFLARE_API_TOKEN secret" >&2
+            exit 1
+          fi
+          if [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ] ; then
+            echo "Warning: CLOUDFLARE_ACCOUNT_ID secret is not set. Ensure your usage does not require it."
+          fi
+
+      - name: Apply DNS changes (dnscontrol push)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          cd /github/workspace
+          dnscontrol push 2>&1 | tee apply.log
+
+      - name: Upload apply logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dns-apply-logs
+          path: apply.log
+
+      - name: Create deploy record (optional)
+        if: success()
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410
+        with:
+          script: |
+            const body = `DNS changes applied in commit ${process.env.GITHUB_SHA}\n\nSee workflow run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+            // best-effort comment on the default branch (no specific PR to attach)
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number || context.payload.pull_request?.number || context.payload.number || 0,
+              body
+            }).catch(() => { /* ignore if cannot comment */ });

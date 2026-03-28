@@ -1,0 +1,66 @@
+{
+  "extends": ["config:base"],
+  "timezone": "UTC",
+  "prConcurrentLimit": 6,
+  "automerge": false,
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "reviewers": [],
+      "automerge": false,
+      "schedule": ["before 3am on Saturday"]
+    },
+    {
+      "matchManagers": ["dockerfile", "docker-compose", "docker"],
+      "groupName": "docker images",
+      "automerge": false,
+      "schedule": ["before 3am on Saturday"]
+    }
+  ],
+  "regexManagers": [
+    {
+      "description": "Detect container images with digest in GitHub Actions workflows (image@sha256:...)",
+      "fileMatch": ["(^|/)\\.github/workflows/.*\\.ya?ml$"],
+      "matchStrings": [
+        "image:\\s*[\"']?(?<depName>[A-Za-z0-9._\\/-]+?)@(?<currentValue>sha256:[0-9a-f]{64})[\"']?"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "{{depName}}",
+      "extractVersionTemplate": "{{currentValue}}",
+      "versioning": "docker",
+      "groupName": "workflow container digests",
+      "schedule": ["before 3am on Saturday"]
+    },
+    {
+      "description": "Detect container images with tags in GitHub Actions workflows (image:tag)",
+      "fileMatch": ["(^|/)\\.github/workflows/.*\\.ya?ml$"],
+      "matchStrings": [
+        "image:\\s*[\"']?(?<depName>[A-Za-z0-9._\\/-]+?):(?<currentValue>[^\\s'\"\\n]+)[\"']?"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "{{depName}}",
+      "extractVersionTemplate": "{{currentValue}}",
+      "versioning": "docker",
+      "groupName": "workflow container tags",
+      "schedule": ["before 3am on Saturday"]
+    }
+  ],
+  "rangeStrategy": "bump",
+  "major": {
+    "enabled": true
+  },
+  "minor": {
+    "enabled": true
+  },
+  "patch": {
+    "enabled": true
+  },
+  "stabilityDays": 0,
+  "prHourlyLimit": 2,
+  "prBodyTemplate": "The following dependency updates are proposed by Renovate:\\n\\n{{#if upgrades}}{{#each upgrades}}- {{depName}}: {{currentValue}} -> {{newValue}}{{#if commitMessage}}\\n  - Commit: {{commitMessage}}{{/if}}\\n{{/each}}{{else}}No upgrades found.{{/if}}\\n\\nPlease review and merge when ready.",
+  "commitMessageAction": "chore(deps)",
+  "commitMessageTopic": "renovate",
+  "packageFiles": []
+}
