@@ -11,8 +11,12 @@ docker_cmd := docker run --rm \
 preview: check
 	@$(docker_cmd) preview
 
+plan: preview
+
 push: check
 	@$(docker_cmd) push
+
+apply: push
 
 check:
 	@$(docker_cmd) version

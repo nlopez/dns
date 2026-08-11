@@ -80,6 +80,7 @@ D(
   CF_PROXY_DEFAULT_OFF,
   IGNORE("_acme-challenge", "TXT"),
   IGNORE("_acme-challenge.**", "TXT"),
+  A("*", "10.43.64.10"),
   A("gw.lga1", "192.168.222.1"),
   A("gw.lga2", "192.168.239.254"),
   A("knode1.lga1", "192.168.222.143"),
