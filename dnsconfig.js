@@ -86,8 +86,8 @@ D(
   A("knode2.lga1", "192.168.222.144"),
   A("nas1.lga1", "192.168.222.149"),
   A("nas2.lga1", "192.168.222.114"),
-  A("odroid1.lga1", "192.168.222.2"),
-  A("odroid2.lga1", "192.168.239.2"),
+  A("odroid.lga1", "192.168.222.2"),
+  A("odroid.lga2", "192.168.239.2"),
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
