@@ -76,10 +76,11 @@ D(
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DefaultTTL(1), // Auto
-  NO_PURGE,
   CF_PROXY_DEFAULT_OFF,
   IGNORE("_acme-challenge", "TXT"),
   IGNORE("_acme-challenge.**", "TXT"),
+  IGNORE_NAME("lga1", "A"),
+  IGNORE_NAME("lga2", "A"),
   A("gw.lga1", "192.168.222.1"),
   A("gw.lga2", "192.168.239.254"),
   A("knode1.lga1", "192.168.222.143"),
@@ -144,6 +145,8 @@ D(
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   CF_PROXY_DEFAULT_OFF,
+  IGNORE_NAME("lga1", "A"),
+  IGNORE_NAME("lga2", "A"),
   // Keep this for continued ProtonMail verification
   TXT("@", "protonmail-verification=95474329be7c5db7b13b98a1a7cf2a302dea3f57"),
   MX("@", 10, "mail.protonmail.ch."),
