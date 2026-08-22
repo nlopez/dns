@@ -151,6 +151,7 @@ D(
   MX("@", 20, "mailsec.protonmail.ch."),
   TXT("@", "v=spf1 include:_spf.protonmail.ch mx ~all"),
   TXT("*", "v=spf1 -all"),
+  A("gw.lga1", "100.114.235.89"),
   A("gw.lga2", "100.68.28.43"),
   A("nas1.lga1", "100.99.217.9"),
   A("nas2.lga1", "100.96.36.12"),
