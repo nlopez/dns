@@ -2,8 +2,11 @@
 [dnscontrol](https://github.com/StackOverflow/dnscontrol) DNS management for my personal domains
 
 # Dependencies
-* Docker
+* [Nix](https://nixos.org) + [devenv](https://devenv.sh)
+* [direnv](https://direnv.net)
 * `op` -- 1Password CLI
 
 # Usage
-`make` to preview changes. `make push` to apply.`
+`direnv allow` once, to load the devenv shell and Cloudflare credentials from 1Password.
+
+`make` to preview changes. `make push` to apply.

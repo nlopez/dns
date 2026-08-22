@@ -80,6 +80,7 @@ D(
   CF_PROXY_DEFAULT_OFF,
   IGNORE("_acme-challenge", "TXT"),
   IGNORE("_acme-challenge.**", "TXT"),
+  A("gw.lga1", "100.114.235.89"),
   A("gw.lga1", "192.168.222.1"),
   A("gw.lga2", "192.168.239.254"),
   A("knode1.lga1", "192.168.222.143"),
@@ -87,7 +88,7 @@ D(
   A("nas1.lga1", "192.168.222.149"),
   A("nas2.lga1", "192.168.222.114"),
   A("odroid.lga1", "192.168.222.2"),
-  A("odroid.lga2", "192.168.239.2"),
+  A("odroid.lga2", "192.168.239.2")
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
@@ -150,6 +151,13 @@ D(
   MX("@", 20, "mailsec.protonmail.ch."),
   TXT("@", "v=spf1 include:_spf.protonmail.ch mx ~all"),
   TXT("*", "v=spf1 -all"),
+  A("gw.lga2", "100.68.28.43"),
+  A("nas1.lga1", "100.99.217.9"),
+  A("nas2.lga1", "100.96.36.12"),
+  A("knode1.lga1", "100.103.48.83"),
+  A("knode2.lga2", "100.69.100.128"),
+  A("odroid.lga1", "100.127.60.59"),
+  A("odroid.lga2", "100.110.65.2"),,
   CNAME(
     "protonmail._domainkey",
     "protonmail.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.",
