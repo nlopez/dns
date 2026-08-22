@@ -88,7 +88,7 @@ D(
   A("nas1.lga1", "192.168.222.149"),
   A("nas2.lga1", "192.168.222.114"),
   A("odroid.lga1", "192.168.222.2"),
-  A("odroid.lga2", "192.168.239.2")
+  A("odroid.lga2", "192.168.239.2"),
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
@@ -157,7 +157,7 @@ D(
   A("knode1.lga1", "100.103.48.83"),
   A("knode2.lga2", "100.69.100.128"),
   A("odroid.lga1", "100.127.60.59"),
-  A("odroid.lga2", "100.110.65.2"),,
+  A("odroid.lga2", "100.110.65.2"),
   CNAME(
     "protonmail._domainkey",
     "protonmail.domainkey.dtq25ze44gqbgofgt2yteu67cedbavwyaszrouvla23bp3c2ltjuq.domains.proton.ch.",
