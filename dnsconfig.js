@@ -32,7 +32,9 @@ D(
   AAAA("unifi", "2604:a880:400:d1:0:4:8533:d001", CF_PROXY_OFF),
   CAA("@", "iodef", "mailto:sslabuse@desertbluffs.com", CAA_CRITICAL),
   CAA("@", "issue", "letsencrypt.org"),
+  CAA("@", "issue", "pki.goog"),
   CAA("@", "issuewild", "letsencrypt.org"),
+  CAA("@", "issuewild", "pki.goog"),
   CNAME(
     "ec25ukpzz6h4nddab3jyevcnzmmmbrgm._domainkey",
     "ec25ukpzz6h4nddab3jyevcnzmmmbrgm.dkim.amazonses.com.",
@@ -81,6 +83,8 @@ D(
   IGNORE("_acme-challenge.**", "TXT"),
   IGNORE_NAME("lga1", "A"),
   IGNORE_NAME("lga2", "A"),
+  IGNORE_NAME("*.lga1", "A"),
+  IGNORE_NAME("*.lga2", "A"),
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
