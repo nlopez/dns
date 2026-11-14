@@ -78,6 +78,7 @@ D(
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DefaultTTL(1), // Auto
+  NO_PURGE,
   CF_PROXY_DEFAULT_OFF,
   IGNORE("_acme-challenge", "TXT"),
   IGNORE("_acme-challenge.**", "TXT"),
