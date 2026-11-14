@@ -2,17 +2,6 @@
 
 var REG_NONE = NewRegistrar("none");
 var DNS_CLOUDFLARE = NewDnsProvider("cloudflare");
-var DNS_BIND = NewDnsProvider("bind", {
-  default_soa: {
-    master: "ns1.radoncanyon.com.",
-    mbox: "dnsadmin.radoncanyon.com.",
-    refresh: 900,
-    retry: 900,
-    expire: 1800,
-    minttl: 60,
-  },
-  default_ns: ["ns1.radoncanyon.com."],
-});
 
 // Domains
 
@@ -78,24 +67,9 @@ D(
   REG_NONE,
   DnsProvider(DNS_CLOUDFLARE),
   DefaultTTL(1), // Auto
-  NO_PURGE,
   CF_PROXY_DEFAULT_OFF,
   IGNORE("_acme-challenge", "TXT"),
   IGNORE("_acme-challenge.**", "TXT"),
-  IGNORE_NAME("lga1", "A"),
-  IGNORE_NAME("lga2", "A"),
-  IGNORE_NAME("gw.lga1", "A"),
-  IGNORE_NAME("knode1.lga1", "A"),
-  IGNORE_NAME("knode2.lga1", "A"),
-  IGNORE_NAME("nas1.lga1", "A"),
-  IGNORE_NAME("nas2.lga1", "A"),
-  IGNORE_NAME("odroid.lga1", "A"),
-  IGNORE_NAME("gw.lga2", "A"),
-  IGNORE_NAME("odroid.lga2", "A"),
-  IGNORE_NAME("*.lga1", "AAAA"),
-  IGNORE_NAME("*.lga2", "AAAA"),
-  A("dns.lga1", "192.168.222.2"),
-  A("dns.lga2", "192.168.239.2"),
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
@@ -108,9 +82,6 @@ D(
     "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; fo=1; rua=mailto:itadso9z@ag.us.dmarcian.com",
   ),
   MX("@", 0, "."),
-  NS("sslip", "ns-aws.sslip.io."),
-  NS("sslip", "ns-gce.sslip.io."),
-  NS("sslip", "ns-azure.sslip.io."),
 );
 
 D(
