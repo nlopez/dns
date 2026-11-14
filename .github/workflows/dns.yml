@@ -63,7 +63,7 @@ jobs:
             echo
             echo '```'
             # Stay well under the 65536 character comment limit.
-            tail -c 60000 preview.txt
+            sed 's/\x1b\[[0-9;]*m//g' preview.txt | tail -c 60000
             echo '```'
           } > comment.md
           cat comment.md >> "$GITHUB_STEP_SUMMARY"
