@@ -85,6 +85,8 @@ D(
   IGNORE_NAME("lga2", "A"),
   IGNORE_NAME("*.lga1", "A"),
   IGNORE_NAME("*.lga2", "A"),
+  IGNORE_NAME("*.lga1", "AAAA"),
+  IGNORE_NAME("*.lga2", "AAAA"),
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
