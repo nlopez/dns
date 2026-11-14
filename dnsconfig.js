@@ -84,9 +84,11 @@ D(
   IGNORE_NAME("lga1", "A"),
   IGNORE_NAME("lga2", "A"),
   IGNORE_NAME("*.lga1", "A"),
-  IGNORE_NAME("*.lga2", "A"),
+  IGNORE_NAME("gw.lga2", "A"),
+  IGNORE_NAME("odroid.lga2", "A"),
   IGNORE_NAME("*.lga1", "AAAA"),
   IGNORE_NAME("*.lga2", "AAAA"),
+  A("dns.lga2", "192.168.239.2"),
   TXT(
     "@",
     "google-site-verification=ZnkGcjiK9_Od1OOq6ZxMFzoS3Q7ZatXb8W_aH89g5mY",
